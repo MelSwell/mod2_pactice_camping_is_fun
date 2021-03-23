@@ -1,0 +1,20 @@
+<h1>Sign Up <%= @camper.name %> for a new activity!</h1>
+<% if flash[:errors] %>
+  <% flash[:errors].each do |msg| %>
+    <ul>
+      <li style="color: red;"><%= msg %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<%= form_for @signup, url: "/campers/#{@camper.id}/signups" do |f| %>
+  <%= f.hidden_field :camper_id, :value => @camper.id %>
+
+  <%= f.label "Activity" %><br>
+  <%= f.collection_select :activity_id, @activities, :id, :name %><br>
+
+  <%= f.label :hour %><br>
+  <%= f.number_field :hour %><br>
+
+  <%= f.submit %>
+<% end %>

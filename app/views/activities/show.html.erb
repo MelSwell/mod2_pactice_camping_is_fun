@@ -1,0 +1,19 @@
+<h1>Activity Details:</h1>
+
+<h3>Name: <%= @activity.name %></h3>
+<h3>Difficulty: <%= @activity.difficulty %></h3>
+<h3>Campers Who Have Signed Up:</h3>
+<ul>
+  <% @activity.campers.each do |c| %>
+    <li><%= link_to c.name, camper_path(c) %></li>
+  <% end %>
+</ul>
+<br>
+<br>
+<div>
+  <%= button_to "Sign Up a Camper for this Activity!", activity_signup_path, method: :get %><br>
+<br>
+<br>
+  <%= button_to "Back to All Activities", activities_path, method: :get %><br>
+  <%= button_to "View all Campers", campers_path, method: :get %><br>
+</div>  
